@@ -10,7 +10,7 @@ Vue.config.productionTip = false;
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyCdjHOMn50H04pN--5zuj2OVQchr8mj1ts',
+    key: process.env.VUE_APP_FIREBASE_APIKEY,
   },
 });
 
