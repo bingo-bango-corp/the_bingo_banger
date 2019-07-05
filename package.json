@@ -9,11 +9,16 @@
   },
   "dependencies": {
     "core-js": "^3.1.2",
+    "firebase": "^6.2.4",
+    "latlon-geohash": "^1.1.0",
+    "simsalabim-design": "^0.5.23",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.6",
-    "vuex": "^3.0.1"
+    "vue2-google-maps": "^0.10.6",
+    "vuex": "^3.0.1",
+    "vuex-easy-firestore": "^1.34.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0-alpha.1",
