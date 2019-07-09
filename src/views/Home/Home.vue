@@ -31,23 +31,46 @@
     </GmapMap>
     <div class="data">
       <Card class="jobs" elevated>
-        <h3 class="headline">Current Requests in Berlin</h3>
-        <JobCard 
-          class="job"
-          v-for="job in jobs"
-          :key="job.id"
-          :jobId="job.id"
-          collapsed
-          :tip="job.tip"
-          :title="job.thing"
-        />
+        <h3 class="headline">Current Open Requests in Berlin</h3>
+        <div class="legend">
+          <div class="item">
+            <div class="status unassigned" />
+            <span class="name">Unassigned</span>
+          </div>
+          <div class="item">
+            <div class="status assigned" />
+            <span class="name">Assigned</span>
+          </div>
+          <div class="item">
+            <div class="status delivered" />
+            <span class="name">Delivered</span>
+          </div>
+        </div>
+        <div class="jobCards">
+          <transition-group name="list">
+            <div 
+              class="jobCardWithStatus"
+              v-for="job in jobs"
+              :key="job.id"
+            >
+              <div class="status" :class="[ job.state ]"/>
+              <JobCard 
+                class="job"
+                :jobId="job.id"
+                collapsed
+                :tip="job.tip"
+                :title="job.thing"
+              />
+            </div>
+          </transition-group>
+        </div>
       </Card>
       <Card class="controls" elevated>
         <h3 class="headline">Simulator controls</h3>
-        <BingoButton @clicked="start">
+        <BingoButton class="control" :disabled="isTicking" @clicked="start">
           Start simulator
         </BingoButton>
-        <BingoButton @clicked="stop">
+        <BingoButton class="control" :disabled="!isTicking" @clicked="stop">
           Stop simulator
         </BingoButton>
         <h3 class="headline">Simulator active: {{ isTicking }}</h3>
@@ -55,10 +78,12 @@
       <Card class="log" elevated>
         <h3 class="headline">Simulator activity</h3>
         <div class="loglines">
-          <div class="entry" v-for="(entry, index) in loglines" :key="index">
-            <p class="code">{{ entry.code }}</p>
-            <p class="jobName">{{ entry.jobName }}</p>
-          </div> 
+          <transition-group name="list">
+            <div class="entry" v-for="(entry, index) in loglines" :key="index">
+              <p class="code">{{ entry.code }}</p>
+              <p class="jobName">{{ entry.jobName }}</p>
+            </div>
+          </transition-group>
         </div>
       </Card>
     </div>
@@ -109,7 +134,7 @@ export default class Home extends Vue {
   }
 
   handleNewEvent(payload: any): void {
-    if (this.loglines.length > 25) {
+    if (this.loglines.length > 30) {
       this.loglines.shift()
     }
 

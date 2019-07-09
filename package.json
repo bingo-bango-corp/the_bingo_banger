@@ -11,7 +11,7 @@
     "core-js": "^3.1.2",
     "firebase": "^6.2.4",
     "latlon-geohash": "^1.1.0",
-    "simsalabim-design": "^0.5.23",
+    "simsalabim-design": "^0.5.28",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",

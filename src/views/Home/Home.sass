@@ -17,26 +17,58 @@
     height: 100vh
     width: 100vw
     padding: 16px
-    grid-template-rows: 1fr 1fr 1fr
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr
     grid-template-columns: 1fr 1.5fr 1fr
     grid-column-gap: 16px
     grid-row-gap: 16px
-    grid-template-areas: "topleft topmiddle topright" "middleleft middlemiddle middleright" "bottomleft bottommiddle bottomright"
     position: fixed
     z-index: 10
     box-sizing: border-box
     .jobs
-      grid-area: topleft
-      grid-row: span 3
+      grid-row-start: 1
+      grid-row-end: 7
       box-sizing: border-box
       overflow: scroll
-      .job
-        margin-bottom: 8px
+      .status
+        height: 32px
+        width: 32px
+        border-radius: 16px
+        margin-right: 16px
+        &.unassigned
+          background: #00F0FF
+        &.assigned
+          background: #FAFF00
+        &.delivered
+          background: #24FF00
+      .legend
+        display: flex
+        margin-bottom: 32px
+        margin-top: 32px
+        .item
+          flex: 1 1 0
+          display: flex
+          align-items: center
+          @include typography("normal")
+          color: var(--foreground)
+          .status
+            margin-right: 8px
+      .jobCards
+        .jobCardWithStatus
+          display: flex
+          align-items: center
+          .job
+            margin-bottom: 8px
     .controls
-      grid-area: bottomright
+      grid-column: 3
+      grid-row-start: 6
+      grid-row-end: 7
+      .control
+        margin-right: 16px
+        margin-bottom: 16px
     .log
-      grid-area: topright
-      grid-row: span 2
+      grid-column: 3
+      grid-row-start: 1
+      grid-row-end: 6
       .loglines
         .entry
           color: var(--foreground)
@@ -53,3 +85,17 @@
             overflow: hidden
             color: var(--level4)
             white-space: nowrap
+
+.list-enter-active
+  transition: all .5
+
+.list-leave-active
+  transition: all .5
+  position: absolute
+
+.list-enter, .list-leave-to
+  opacity: 0
+  transform: translateY(30px)
+
+.list-move
+  transition: transform .5s
