@@ -22,6 +22,9 @@ const actions: Action[] = [
   {
     chance: .1,
     function: assignJob,
+    condition: (currentJobs: any) => {
+      return availableToAssignJobs.length > 1;
+    },
   },
   {
     chance: .1,
@@ -48,4 +51,8 @@ export default () => {
 
 const checkCondition = (action: Action, currentJobs: any) => {
   return (action.condition) ? action.condition(currentJobs) : true;
+};
+
+const availableToAssignJobs = (jobs: any[]): any[] => {
+  return jobs.filter((j) => j.state === 'unassigned');
 };
