@@ -23,7 +23,7 @@ const actions: Action[] = [
     chance: .1,
     function: assignJob,
     condition: (currentJobs: any) => {
-      return availableToAssignJobs.length > 1;
+      return availableToAssignJobs(currentJobs).length > 1;
     },
   },
   {
