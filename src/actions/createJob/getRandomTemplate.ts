@@ -50,6 +50,34 @@ export const templates = [
     thing: 'A hug…',
     description: 'Warschauer Str. 85',
   },
+  {
+    thing: 'Pack of American Spirit Orange',
+    description: 'Tempelhofer Damm 45',
+  },
+  {
+    thing: 'OCB Blau blättchen',
+    description: 'Top of the hill in Hasenheide',
+  },
+  {
+    thing: 'OCB slim filters',
+    description: 'Tempelhofer Feld by the dog area',
+  },
+  {
+    thing: '5l grill coal',
+    description: 'Rungestraße 5',
+  },
+  {
+    thing: '5 big red onions',
+    description: 'Kantstr. 8',
+  },
+  {
+    thing: 'pack of aspirin',
+    description: 'Eliasstr. 3',
+  },
+  {
+    thing: '1 can Pringles Paprika',
+    description: 'Schlosstr. 7',
+  },
 ] as NewJob[];
 
 export default () => {
